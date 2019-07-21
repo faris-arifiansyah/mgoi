@@ -24,7 +24,7 @@ type CollectionManager interface {
 	//Repair() *mgo.Iter
 	//Update(selector interface{}, update interface{}) error
 	//UpdateAll(selector interface{}, update interface{}) (info *mgo.ChangeInfo, err error)
-	//UpdateId(id interface{}, update interface{}) error
+	UpdateId(id interface{}, update interface{}) error
 	//Upsert(selector interface{}, update interface{}) (info *mgo.ChangeInfo, err error)
 	//UpsertId(id interface{}, update interface{}) (info *mgo.ChangeInfo, err error)
 	//With(s *mgo.Session) *CollectionManager
@@ -66,4 +66,8 @@ func (c *Collection) Pipe(query interface{}) PipeManager {
 	return &Pipe{
 		pipe: c.collection.Pipe(query),
 	}
+}
+
+func (c *Collection) UpdateId(id interface{}, update interface{}) error {
+	return c.collection.UpdateId(id, update)
 }
