@@ -1,4 +1,4 @@
-package pmgo
+package mgoi
 
 import (
 	"crypto/tls"

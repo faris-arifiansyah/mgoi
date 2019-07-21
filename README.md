@@ -1,6 +1,6 @@
 # Percona MongoDB Go driver
 
-[![](https://godoc.org/github.com/percona/toolkit-go/pmgo?status.svg)](https://godoc.org/github.com/percona/toolkit-go/pmgo)
+[![](https://godoc.org/github.com/faris-arifiansyah/toolkit-go/mgoi?status.svg)](https://godoc.org/github.com/faris-arifiansyah/toolkit-go/mgoi)
 
 **WIP** NOT ALL INTERFACES HAVE BEEN IMPLEMENTED YET  
 
@@ -20,7 +20,7 @@ import (
     "fmt"
     "log"
 
-    "github.com/percona/pmgo"
+    "github.com/faris-arifiansyah/mgoi"
     "gopkg.in/mgo.v2/bson"
 )
 
@@ -30,7 +30,7 @@ type User struct {
 }
 
 func main() {
-    dialer := pmgo.NewDialer()
+    dialer := mgoi.NewDialer()
     session, err := dialer.Dial("localhost")
     if err != nil {
         print(err)
@@ -46,7 +46,7 @@ func main() {
 
 }
 
-func getUser(session pmgo.SessionManager, id int) (*User, error) {
+func getUser(session mgoi.SessionManager, id int) (*User, error) {
     var user User
     err := session.DB("test").C("testc").Find(bson.M{"id": id}).One(&user)
 
@@ -73,11 +73,11 @@ import (
     "gopkg.in/mgo.v2/bson"
 
     "github.com/golang/mock/gomock"
-    "github.com/percona/pmgo"
-    "github.com/percona/pmgo/pmgomock"
+    "github.com/faris-arifiansyah/mgoi"
+    "github.com/faris-arifiansyah/mgoi/mgoimock"
 )
 
-var Server pmgo.DBTestServer
+var Server mgoi.DBTestServer
 
 func TestGetUser(t *testing.T) {
 
@@ -91,16 +91,16 @@ func TestGetUser(t *testing.T) {
 
     // Mock up a database, session, collection and a query and set
     // expected/returned values for each type
-    query := pmgomock.NewMockQueryManager(ctrl)
+    query := mgoimock.NewMockQueryManager(ctrl)
     query.EXPECT().One(gomock.Any()).SetArg(0, user).Return(nil)
 
-    collection := pmgomock.NewMockCollectionManager(ctrl)
+    collection := mgoimock.NewMockCollectionManager(ctrl)
     collection.EXPECT().Find(bson.M{"id": 1}).Return(query)
 
-    database := pmgomock.NewMockDatabaseManager(ctrl)
+    database := mgoimock.NewMockDatabaseManager(ctrl)
     database.EXPECT().C("testc").Return(collection)
 
-    session := pmgomock.NewMockSessionManager(ctrl)
+    session := mgoimock.NewMockSessionManager(ctrl)
     session.EXPECT().DB("test").Return(database)
 
     // Call the function we want to test. It will use the mocked interfaces
@@ -120,7 +120,7 @@ func TestGetUser(t *testing.T) {
 A not so well known testing method is the use of mgo's dbtest server.  
 dbtest starts a new MongoDB instance (mongo binary must be in the path), using a temporary directory as dbpath 
 and then on Stop() it will clean all testing data.  
-pmgo also has interfaces for `dbtest.DBServer` to use in integration tests:  
+mgoi also has interfaces for `dbtest.DBServer` to use in integration tests:  
 
 ```go
 func TestIntegration(t *testing.T) {
@@ -141,7 +141,7 @@ func TestIntegration(t *testing.T) {
 func setup() {
     os.Setenv("CHECK_SESSIONS", "0")
     tempDir, _ := ioutil.TempDir("", "testing")
-    Server = pmgo.NewDBServer()
+    Server = mgoi.NewDBServer()
     Server.SetPath(tempDir)
 
     session := Server.Session()
@@ -168,6 +168,6 @@ func tearDown() {
 ## Generating new mocks
 If you update a file to add more functions, you can create new mocks by running:  
 ```
-mockgen -source <path>/pmgo/collection.go -destination=<path>/pmgo/pmgomock/collection.go -package pmgomock -imports ".=github.com/percona/pmgo"
+mockgen -source <path>/mgoi/collection.go -destination=<path>/mgoi/mgoimock/collection.go -package mgoimock -imports ".=github.com/faris-arifiansyah/mgoi"
 ```
 

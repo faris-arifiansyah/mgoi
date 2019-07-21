@@ -1,4 +1,4 @@
-package pmgo
+package mgoi
 
 import "gopkg.in/mgo.v2/dbtest"
 

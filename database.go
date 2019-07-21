@@ -1,4 +1,4 @@
-package pmgo
+package mgoi
 
 import mgo "gopkg.in/mgo.v2"
 

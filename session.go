@@ -1,4 +1,4 @@
-package pmgo
+package mgoi
 
 import (
 	"time"
@@ -45,7 +45,7 @@ type Session struct {
 	session *mgo.Session
 }
 
-// This methos allows to use mgo's dbtest.DBServer in pmgo tests.
+// This methos allows to use mgo's dbtest.DBServer in mgoi tests.
 // Example:
 // var Server dbtest.DBServer
 // tempDir, _ := ioutil.TempDir("", "testing")
