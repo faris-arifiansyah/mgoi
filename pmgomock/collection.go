@@ -94,6 +94,16 @@ func (_mr *_MockCollectionManagerRecorder) Pipe(arg0 interface{}) *gomock.Call {
 	return _mr.mock.ctrl.RecordCall(_mr.mock, "Pipe", arg0)
 }
 
+func (_m *MockCollectionManager) Update(_param0 interface{}, _param1 interface{}) error {
+	ret := _m.ctrl.Call(_m, "Update", _param0, _param1)
+	ret0, _ := ret[0].(error)
+	return ret0
+}
+
+func (_mr *_MockCollectionManagerRecorder) Update(arg0 interface{}, arg1 interface{}) *gomock.Call {
+	return _mr.mock.ctrl.RecordCall(_mr.mock, "Update", arg0, arg1)
+}
+
 func (_m *MockCollectionManager) UpdateId(_param0 interface{}, _param1 interface{}) error {
 	ret := _m.ctrl.Call(_m, "UpdateId", _param0, _param1)
 	ret0, _ := ret[0].(error)
