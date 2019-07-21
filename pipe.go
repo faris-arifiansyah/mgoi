@@ -1,6 +1,6 @@
 package mgoi
 
-import mgo "gopkg.in/mgo.v2"
+import "github.com/globalsign/mgo"
 
 type PipeManager interface {
 	All(result interface{}) error

@@ -6,8 +6,8 @@ import (
 	time "time"
 
 	. "github.com/faris-arifiansyah/mgoi"
+	"github.com/globalsign/mgo"
 	gomock "github.com/golang/mock/gomock"
-	mgo_v2 "gopkg.in/mgo.v2"
 )
 
 // Mock of QueryManager interface
@@ -41,9 +41,9 @@ func (_mr *_MockQueryManagerRecorder) All(arg0 interface{}) *gomock.Call {
 	return _mr.mock.ctrl.RecordCall(_mr.mock, "All", arg0)
 }
 
-func (_m *MockQueryManager) Apply(change mgo_v2.Change, result interface{}) (*mgo_v2.ChangeInfo, error) {
+func (_m *MockQueryManager) Apply(change mgo.Change, result interface{}) (*mgo.ChangeInfo, error) {
 	ret := _m.ctrl.Call(_m, "Apply", change, result)
-	ret0, _ := ret[0].(*mgo_v2.ChangeInfo)
+	ret0, _ := ret[0].(*mgo.ChangeInfo)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
@@ -127,9 +127,9 @@ func (_mr *_MockQueryManagerRecorder) Hint(arg0 ...interface{}) *gomock.Call {
 	return _mr.mock.ctrl.RecordCall(_mr.mock, "Hint", arg0...)
 }
 
-func (_m *MockQueryManager) Iter() *mgo_v2.Iter {
+func (_m *MockQueryManager) Iter() *mgo.Iter {
 	ret := _m.ctrl.Call(_m, "Iter")
-	ret0, _ := ret[0].(*mgo_v2.Iter)
+	ret0, _ := ret[0].(*mgo.Iter)
 	return ret0
 }
 
@@ -157,9 +157,9 @@ func (_mr *_MockQueryManagerRecorder) LogReplay() *gomock.Call {
 	return _mr.mock.ctrl.RecordCall(_mr.mock, "LogReplay")
 }
 
-func (_m *MockQueryManager) MapReduce(job *mgo_v2.MapReduce, result interface{}) (*mgo_v2.MapReduceInfo, error) {
+func (_m *MockQueryManager) MapReduce(job *mgo.MapReduce, result interface{}) (*mgo.MapReduceInfo, error) {
 	ret := _m.ctrl.Call(_m, "MapReduce", job, result)
-	ret0, _ := ret[0].(*mgo_v2.MapReduceInfo)
+	ret0, _ := ret[0].(*mgo.MapReduceInfo)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }

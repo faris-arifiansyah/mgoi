@@ -4,8 +4,8 @@ package mgoimock
 
 import (
 	. "github.com/faris-arifiansyah/mgoi"
+	"github.com/globalsign/mgo"
 	gomock "github.com/golang/mock/gomock"
-	mgo_v2 "gopkg.in/mgo.v2"
 )
 
 // Mock of PipeManager interface
@@ -69,9 +69,9 @@ func (_mr *_MockPipeManagerRecorder) Explain(arg0 interface{}) *gomock.Call {
 	return _mr.mock.ctrl.RecordCall(_mr.mock, "Explain", arg0)
 }
 
-func (_m *MockPipeManager) Iter() *mgo_v2.Iter {
+func (_m *MockPipeManager) Iter() *mgo.Iter {
 	ret := _m.ctrl.Call(_m, "Iter")
-	ret0, _ := ret[0].(*mgo_v2.Iter)
+	ret0, _ := ret[0].(*mgo.Iter)
 	return ret0
 }
 

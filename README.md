@@ -21,7 +21,7 @@ import (
     "log"
 
     "github.com/faris-arifiansyah/mgoi"
-    "gopkg.in/mgo.v2/bson"
+    "github.com/globalsign/mgo/bson"
 )
 
 type User struct {
@@ -70,7 +70,7 @@ import (
     "reflect"
     "testing"
 
-    "gopkg.in/mgo.v2/bson"
+    "github.com/globalsign/mgo/bson"
 
     "github.com/golang/mock/gomock"
     "github.com/faris-arifiansyah/mgoi"
