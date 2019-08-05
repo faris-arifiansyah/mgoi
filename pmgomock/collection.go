@@ -113,3 +113,25 @@ func (_m *MockCollectionManager) UpdateId(_param0 interface{}, _param1 interface
 func (_mr *_MockCollectionManagerRecorder) UpdateId(arg0 interface{}, arg1 interface{}) *gomock.Call {
 	return _mr.mock.ctrl.RecordCall(_mr.mock, "UpdateId", arg0, arg1)
 }
+
+func (_m *MockCollectionManager) Upsert(_param0 interface{}, _param1 interface{}) (*mgo.ChangeInfo, error) {
+	ret := _m.ctrl.Call(_m, "Upsert", _param0, _param1)
+	ret0, _ := ret[0].(*mgo.ChangeInfo)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+func (_mr *_MockCollectionManagerRecorder) Upsert(arg0 interface{}, arg1 interface{}) *gomock.Call {
+	return _mr.mock.ctrl.RecordCall(_mr.mock, "Upsert", arg0)
+}
+
+func (_m *MockCollectionManager) UpsertId(_param0 interface{}, _param1 interface{}) (*mgo.ChangeInfo, error) {
+	ret := _m.ctrl.Call(_m, "UpsertId", _param0, _param1)
+	ret0, _ := ret[0].(*mgo.ChangeInfo)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+func (_mr *_MockCollectionManagerRecorder) UpsertId(arg0 interface{}, arg1 interface{}) *gomock.Call {
+	return _mr.mock.ctrl.RecordCall(_mr.mock, "UpsertId", arg0)
+}

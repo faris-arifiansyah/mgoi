@@ -25,8 +25,8 @@ type CollectionManager interface {
 	Update(selector interface{}, update interface{}) error
 	//UpdateAll(selector interface{}, update interface{}) (info *mgo.ChangeInfo, err error)
 	UpdateId(id interface{}, update interface{}) error
-	//Upsert(selector interface{}, update interface{}) (info *mgo.ChangeInfo, err error)
-	//UpsertId(id interface{}, update interface{}) (info *mgo.ChangeInfo, err error)
+	Upsert(selector interface{}, update interface{}) (info *mgo.ChangeInfo, err error)
+	UpsertId(id interface{}, update interface{}) (info *mgo.ChangeInfo, err error)
 	//With(s *mgo.Session) *CollectionManager
 }
 
@@ -74,4 +74,12 @@ func (c *Collection) Update(selector interface{}, update interface{}) error {
 
 func (c *Collection) UpdateId(id interface{}, update interface{}) error {
 	return c.collection.UpdateId(id, update)
+}
+
+func (c *Collection) Upsert(selector interface{}, update interface{}) (*mgo.ChangeInfo, error) {
+	return c.collection.Upsert(selector, update)
+}
+
+func (c *Collection) UpsertId(id interface{}, update interface{}) (*mgo.ChangeInfo, error) {
+	return c.collection.UpsertId(id, update)
 }
